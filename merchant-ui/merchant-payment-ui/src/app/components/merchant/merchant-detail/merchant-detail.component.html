@@ -1,0 +1,18 @@
+<div class="container mt-4">
+    <h2>Merchant Details</h2>
+  
+    <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+  
+    <div *ngIf="merchant" class="card p-3">
+      <h4>{{ merchant.name }}</h4>
+      <p><strong>Email:</strong> {{ merchant.email }}</p>
+      <p><strong>Address:</strong> {{ merchant.address }}</p>
+      
+  
+      <div class="mt-3">
+        <a [routerLink]="['/merchants', merchant.id, 'edit']" class="btn btn-primary">Edit</a>
+        <a routerLink="/merchants" class="btn btn-secondary">Back</a>
+      </div>
+    </div>
+  </div>
+  

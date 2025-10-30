@@ -1,0 +1,14 @@
+.layout {
+    display: flex;
+  }
+  
+  .content {
+    margin-left: 220px; /* same as sidebar width */
+    padding: 20px;
+    width: 100%;
+  }
+  
+  .sidebar.collapsed + .content {
+    margin-left: 60px;
+  }
+  

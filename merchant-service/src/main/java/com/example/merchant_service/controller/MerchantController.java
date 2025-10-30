@@ -2,6 +2,7 @@ package com.example.merchant_service.controller;
 
 import java.util.List;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,6 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.merchant_service.entity.Merchant;
 import com.example.merchant_service.service.MerchantService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("api/merchants")
 public class MerchantController {
@@ -25,7 +28,7 @@ public class MerchantController {
     }
 
     @PostMapping
-    public Merchant createMerchant(@RequestBody Merchant merchant) {
+    public Merchant createMerchant(@Valid @RequestBody Merchant merchant) {
         return merchantService.createMerchant(merchant);
     }
 
@@ -40,7 +43,7 @@ public class MerchantController {
     }
 
     @PutMapping("/{id}")
-    public Merchant updateMerchant(@PathVariable Long id, @RequestBody Merchant updatedMerchant) {
+    public Merchant updateMerchant(@PathVariable Long id, @Valid @RequestBody Merchant updatedMerchant) {
         return merchantService.updateMerchant(id, updatedMerchant);
     }
 
@@ -48,4 +51,10 @@ public class MerchantController {
     public void deleteMerchant(@PathVariable Long id) {
         merchantService.deleteMerchant(id);
     }
+
+    @GetMapping("/exists/{id}")
+    public ResponseEntity<Boolean> merchantExists(@PathVariable Long id) {
+        return ResponseEntity.ok(merchantService.existsById(id));
+    }
+
 }

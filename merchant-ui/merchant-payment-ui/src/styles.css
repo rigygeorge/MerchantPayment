@@ -1,0 +1,11 @@
+/* You can add global styles to this file, and also import other style files */
+.d-flex {
+    height: 100vh; /* full height of viewport */
+    overflow: hidden;
+  }
+  
+  .flex-grow-1 {
+    overflow-y: auto; /* allow content scroll if long */
+    padding: 20px;
+  }
+  

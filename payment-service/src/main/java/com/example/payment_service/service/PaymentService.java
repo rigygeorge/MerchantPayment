@@ -2,13 +2,16 @@ package com.example.payment_service.service;
 
 import java.util.List;
 
+import com.example.payment_service.dto.PaymentDTO;
+import com.example.payment_service.dto.PaymentRequest;
 import com.example.payment_service.entity.Payment;
-
+    
 public interface PaymentService {
 
-    Payment createPayment(Payment payment);
-    List<Payment> getAllPayments();
-    Payment getPaymentById(Long id);
-    Payment updatePayment(Long id, Payment payment);
+    PaymentDTO createPayment(PaymentRequest paymentRequest, String authHeader);
+    PaymentDTO getPaymentById(Long id);
+    List<PaymentDTO> getPaymentsByMerchant(Long merchantId);
+    List<PaymentDTO> getAllPayments();
+    PaymentDTO updatePaymentStatus(Long id, Payment.PaymentStatus status);
     void deletePayment(Long id);
 }

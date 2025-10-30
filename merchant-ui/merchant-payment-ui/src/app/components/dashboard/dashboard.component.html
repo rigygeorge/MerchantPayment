@@ -1,0 +1,61 @@
+<div class="container mt-5">
+    <h2>Dashboard</h2>
+    
+      
+    <div class="row mt-4">
+      
+      <!-- Total Merchants -->
+      <div class="col-md-4">
+        <div class="card text-center shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">Total Merchants</h5>
+            <p class="display-6">{{ totalMerchants }}</p>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Total Transactions -->
+      <div class="col-md-4">
+        <div class="card text-center shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">Total Transactions</h5>
+            <p class="display-6">{{ totalTransactions }}</p>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Pending Payments -->
+      <div class="col-md-4">
+        <div class="card text-center shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">Pending Payments</h5>
+            <p class="display-6">{{ pendingPayments }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Recent Merchants Table -->
+    <div class="row mt-5">
+      <div class="col-12">
+        <h4>Recent Merchants</h4>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Email</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let merchant of merchants | slice:0:5">
+              <td>{{ merchant.id }}</td>
+              <td>{{ merchant.name }}</td>
+              <td>{{ merchant.email }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  

@@ -8,6 +8,8 @@ import com.example.merchant_service.entity.Merchant;
 import com.example.merchant_service.repository.MerchantRepository;
 import com.example.merchant_service.service.MerchantService;
 
+import jakarta.persistence.EntityNotFoundException;
+
 @Service
 public class MerchantServiceImpl implements MerchantService{
 
@@ -38,12 +40,20 @@ public class MerchantServiceImpl implements MerchantService{
         Merchant existingMerchant = getMerchantById(id);
         existingMerchant.setName(updatedMerchant.getName());
         existingMerchant.setEmail(updatedMerchant.getEmail());
+        existingMerchant.setAddress(updatedMerchant.getAddress());
         // Update other fields as necessary
         return merchantRepository.save(existingMerchant);
     }
 
     @Override
     public void deleteMerchant(Long id) {
+         if (!merchantRepository.existsById(id)) {
+            throw new EntityNotFoundException("Merchant not found with id: " + id);
+        }
         merchantRepository.deleteById(id);
+    }
+    @Override
+    public boolean existsById(Long id) {
+        return merchantRepository.existsById(id);    
     }
 }

@@ -13,4 +13,6 @@ public interface MerchantService {
     Merchant getMerchantById(Long id);
     Merchant updateMerchant(Long id, Merchant updatedMerchant);
     void deleteMerchant(Long id);
+
+    boolean existsById(Long id);
 }

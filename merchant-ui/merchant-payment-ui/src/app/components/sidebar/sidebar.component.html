@@ -1,0 +1,28 @@
+<div class="sidebar" [class.collapsed]="isCollapsed">
+    <div class="sidebar-header">
+      <h2 *ngIf="!isCollapsed">PayLink</h2>
+      <button class="toggle-btn" (click)="toggleSidebar()">
+        ☰
+      </button>
+    </div>
+  
+    <ul class="sidebar-menu">
+      <li routerLink="/dashboard" routerLinkActive="active">
+        <span class="bi bi-house-door"></span>
+        <span *ngIf="!isCollapsed">Dashboard</span>
+      </li>
+      <li routerLink="/merchants" routerLinkActive="active">
+        <span class="bi bi-people"></span>
+        <span *ngIf="!isCollapsed">Merchants</span>
+      </li>
+      <li routerLink="/payments" routerLinkActive="active">
+        <span class="bi bi-credit-card"></span>
+        <span *ngIf="!isCollapsed">Payments</span>
+      </li>
+      <li routerLink="/transactions" routerLinkActive="active">
+        <span class="bi bi-arrow-repeat"></span>
+        <span *ngIf="!isCollapsed">Transactions</span>
+      </li>
+    </ul>
+  </div>
+  
